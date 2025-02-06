@@ -52,6 +52,9 @@ test.describe('Test Playwright.dev home page', () => {
 
   test("check Java page", async ({ page }) => {
     await clickGetStarted(page);
+    await assertPageUrl(page, pageURL);
+    await page.waitForLoadState("load");
+    await page.waitForLoadState("domcontentloaded");
     await hoverNode(page);
     await clickJava(page);
     await assertPageUrl(page, pageURL);
