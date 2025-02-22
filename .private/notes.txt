@@ -1,0 +1,43 @@
+# NMy notes from the TAU Introduction to Playwright course
+
+## Keeping things up to date:
+    VS Code:
+        Update with Help > Check for Updates...
+    Node.js:
+        Install/Update using Chocolatey GUI
+        Check version with "node -v" ("22.13.1" on 2025/02/01)
+    npm:
+        Install/Update with "npm install -g npm@latest"
+        Check version with "npm -v" or "npm -version" ("11.1.0"  on 2025/02/01)
+    Playwright:
+        Install/Update Playwright itself with "npm install -D @playwright/test@latest"
+        Install/Update browsers with their dependencies: "npx playwright install --with-deps"
+            To download new browsers: "npx playwright install"
+        Check version with "npx playwright --version" ("1.50.1" on 2025/02/01)
+
+## Other things to install:
+    npm install dotenv --save
+
+## Reporter alternatives:
+    npx playwright test --reporter=list
+    npx playwright test tests\ --reporter=dot
+
+## In package.json, there's a "scripts" section:
+    
+    "scripts": {
+    "test:e2e": "npx playwright test tests/",   /* Applies only to the "tests/" folder */
+    "test:e2e:all": "npx playwright test tests --project=all-browsers-and-tests",  /* Applies to all folders whose names start with "tests" */
+    ...
+    "test:e2e:dev": "npx playwright test tests-examples/ --project=chromium --headed --retries=0 --reporter=line",
+    }
+
+    As a result, typing "nprm run test:e2e" in the terminal, does the same as typing "npx playwright test tests/"
+
+
+## In playwright.config.ts:
+    There are multiple sections with "name: 'all-browsers-and-tests',", 1 for each of the browsers included in the 'all-browsers-and-tests' project
+
+## Other test runner options:
+    npx playwright test -g "should allow me to add todo items" // Runs the test titled "should allow me to add todo items" in all projects
+    npx playwright test --debug // Runs the tests in debug mode
+    npx playwright test --ui // Runts the tests in UI mode
