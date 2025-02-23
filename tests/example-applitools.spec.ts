@@ -19,8 +19,8 @@ export let Batch: BatchInfo;
 export let Config: Configuration;
 export let Runner: EyesRunner;
 let eyes: Eyes;
-let URL = 'https://demo.applitools.com';
-// let URL = 'https://demo.applitools.com/index_v2.html';
+// let URL = 'https://demo.applitools.com';
+let URL = 'https://demo.applitools.com/index_v2.html';
 
 test.beforeAll(async() => {
 
