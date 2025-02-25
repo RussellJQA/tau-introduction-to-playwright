@@ -21,7 +21,8 @@ test.describe('New Todo', () => {
 
     // Make sure the list only has one todo item.
     await expect(page.getByTestId('todo-title')).toHaveText([
-      TODO_ITEMS[1] // intentionally changed here to fail the test
+      TODO_ITEMS[0] // original line
+      // TODO_ITEMS[1] // intentionally changed here from 0 to 1 to fail the test
     ]);
 
     // Create 2nd todo.
@@ -199,7 +200,8 @@ test.describe('@smoke - Editing', () => {
 
   test('should hide other controls when editing', async ({ page }) => {
     // const todoItem = page.getByTestId('todo-item').nth(1);
-    const todoItem = page.getByTestId('todo-item'); // intentionally changed here to fail the test
+    //const todoItem = page.getByTestId('todo-item'); // intentionally changed here to fail the test
+    const todoItem = page.getByRole('listitem').filter({ hasText: 'buy some cheese' }) // An alternative mentioned by the report, which also works
     await todoItem.dblclick();
     await expect(todoItem.getByRole('checkbox')).not.toBeVisible();
     await expect(todoItem.locator('label', {
